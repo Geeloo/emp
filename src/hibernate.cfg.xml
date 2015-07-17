@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.show_sql">true</property>
+
+
+		<!-- 实体映射 -->
+		<mapping
+			resource="net/northking/king/auth/king/vo/Customer.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/Project.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/User.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbEmployee.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbDepartment.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbProject.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbCustomer.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbEmployeeContact.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbProjectStatus.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbEmployeeCost.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbEmploeeProject.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbEmployIncome.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbLevelWage.hbm.xml" />
+		<mapping
+			resource="net/northking/king/auth/king/vo/TbEmployeeProject.hbm.xml" />
+
+
+	</session-factory>
+</hibernate-configuration>

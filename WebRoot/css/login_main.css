@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;}
+em{ font-style:normal;}
+a{hide-focus: expression(this.hideFocus=true);  /* for ie 5+ */outline: none;  /* for firefox 1.5 + */text-decoration:none;color:#000;}
+a:hover{text-decoration:underline;}
+img,input{ border:0 none;}
+div{margin:0;padding:0;}
+body{ background:#d6dee0 url(../images/loginMain_bg.jpg) repeat-x;}
+.mainArea{background:#d6dee0 url(../images/loginMain_bg.jpg) repeat-x; ;margin:0;padding:0;}
+.memu_btn{ padding-right: 15px; display: block; height: 25px; background-position: right top; background-repeat: no-repeat; width: auto;
+ cursor: pointer;background-image:url(../images/memu_btn.gif); }
+

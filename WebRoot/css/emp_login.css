@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;}
+em{ font-style:normal;}
+a{hide-focus: expression(this.hideFocus=true);  /* for ie 5+ */outline: none;  /* for firefox 1.5 + */text-decoration:none;color:#000;}
+a:hover{text-decoration:underline;}
+img,input{ border:0 none;}
+.clear{ clear:both;}
+body{ background:#d6dee0 url(../images/login_bg.jpg) repeat-x;}
+.login{ background:url(../images/login_index.jpg) no-repeat; background-position: center top; height:310px; margin:0 auto;  padding:260px 0 0 400px;}
+.login_text{ background:none; border:0 none; height:30px; line-height:30px; margin-bottom:45px;}
+.loginbutton{ width:120px; height:30px;cursor:pointer; background:none;position:relative;bottom:25px;}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="EMP"
+  id="myeclipse.1433835402018"
+  context-root="/AK"
+  j2ee-spec="5.0"
+  archive="EMP.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

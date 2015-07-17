@@ -1,0 +1,1 @@
+<% response.sendRedirect(request.getContextPath()+"/page/emp_login.jsp"); %>
