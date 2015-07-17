@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 映射持久化对象与数据库表的映射关联 -->
+<hibernate-mapping>
+	<class name="net.northking.king.auth.king.vo.User" table="TB_USER">
+		<id name="id" type="string">
+			<column name="ID"></column>
+		</id>
+		<property name="loginCode" column="LOGIN_CODE" type="string"></property>
+		<property name="name" column="NAME" type="string"></property>
+		<property name="password" column="PASSWORD" type="string"></property>
+		<property name="sysLevel" column="SYS_LEVEL" type="string"></property>
+		<property name="mobilePhone" column="MOBILE_PHONE" type="string"></property>
+		<property name="telephone" column="TELEPHONE" type="string"></property>
+		<property name="email" column="EMAIL" type="string"></property>
+		<property name="entryDate" column="ENTRY_DATE" type="date"></property>
+		<property name="positive" column="POSITIVE" type="date"></property>
+		<property name="birthday" column="BIRTHDAY" type="date"></property>
+		<property name="departmentId" column="DEPARTMENT_ID" type="string"></property>
+		<property name="sex" column="SEX" type="string"></property>
+		<property name="centerId" column="CENTER_ID" type="string"></property>
+		<property name="superior" column="SUPERIOR" type="string"></property>
+		<property name="post" column="POST" type="string"></property>
+		<property name="documentType" column="DOCUMENT_TYPE" type="string"></property>
+		<property name="documentNumber" column="DOCUMENT_NUMBER" type="string"></property>
+		<property name="school" column="SCHOOL" type="string"></property>
+		<property name="education" column="EDUCATION" type="string"></property>
+		<property name="degree" column="DEGREE" type="string"></property>
+		<property name="certificate" column="CERTIFICATE" type="string"></property>
+	</class>
+</hibernate-mapping>

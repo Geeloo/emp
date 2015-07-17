@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.extension" value="do"></constant>
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	
+		
+	<!-- 登录 -->
+	<package name="login" namespace="/" extends="struts-default">
+		<action name="loginSys" class="net.northking.king.auth.king.action.LoginAction" method="loginIn">
+			<result name="loginSuccess">/page/query/query.jsp</result>
+			<result name="loginFail">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="customer" namespace="/customer" extends="struts-default">
+		<action name="customerAction_*" class="customerAction" method="{1}">
+			<result name="showCustomerPage">/page/query/customer.jsp</result>
+			<result name="home">/WEB-INF/page/CustomerIndex.jsp</result>
+			<result name="edit">/WEB-INF/page/CustomerEdit.jsp</result>
+			<result name="save" type="redirectAction">
+				<param name="namespace">/system</param>
+				<param name="actionName">customerAction_home</param>
+			</result>
+		</action>
+	</package>
+	<!--  人员信息-->
+	<package name="employee" namespace="/employee" extends="struts-default">
+		<action name="employeeAction_*" class="net.northking.king.auth.king.action.EmployeeAction" method="{1}">
+			<result name="query">/page/query/employee.jsp</result>
+			<result name="home">/WEB-INF/page/CustomerIndex.jsp</result>
+			<result name="edit">/WEB-INF/page/CustomerEdit.jsp</result>
+			<result name="save" type="redirectAction">
+				<param name="namespace">/system</param>
+				<param name="actionName">customerAction_home</param>
+			</result>
+		</action>
+	</package>
+	<!-- 统计查询 -->
+	<package name="count" namespace="/count" extends="struts-default">
+		<action name="countQueryAction_*" class="countQueryAction" method="{1}">
+			<result name="count">/page/query/query.jsp</result>
+		</action>
+	</package>
+	<!-- 驻场信息 -->
+	<package name="employeeProject" namespace="/employeeProject" extends="struts-default">
+		<action name="employeeProjectAction_*" class="employeeProjectAction" method="{1}">
+		</action>
+	</package>
+</struts>
