@@ -15,9 +15,9 @@
 	<context:component-scan base-package="net.northking.king"></context:component-scan>
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.1.232:1521:nkoa"/>
-		<property name="user" value="nktest" />
-		<property name="password" value="nktest" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<property name="user" value="emp" />
+		<property name="password" value="emp" />
 		<property name="minPoolSize" value="5" />
 	
 		<property name="maxPoolSize" value="30" />
