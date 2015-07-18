@@ -50,10 +50,10 @@
 	
 	<tx:advice id="aa" transaction-manager="txManager">
 		<tx:attributes>
-			<tx:method name="save*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
+			<tx:method name="save*" isolation="DEFAULT"  rollback-for="Exception" propagation="REQUIRED"/>
 			<tx:method name="update*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
 			<tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
-			<tx:method name="*" read-only="true"/>
+			<!-- <tx:method name="*" read-only="true"/> -->
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>

@@ -25,17 +25,17 @@
                 <comment>级别</comment>
             </column>
         </property>
-        <property name="entryDate" type="date">
+        <property name="entryDate" type="string">
             <column name="ENTRY_DATE" length="7">
                 <comment>入职时间</comment>
             </column>
         </property>
-        <property name="positive" type="date">
+        <property name="positive" type="string">
             <column name="POSITIVE" length="7">
                 <comment>转正时间</comment>
             </column>
         </property>
-        <property name="birthday" type="date">
+        <property name="birthday" type="string">
             <column name="BIRTHDAY" length="7">
                 <comment>生日</comment>
             </column>

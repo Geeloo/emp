@@ -5,14 +5,19 @@ import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Resource;
+
 import net.northking.king.auth.king.dao.ICommonDao;
 import net.northking.king.utils.GenericSuperClass;
+
+import org.hibernate.FlushMode;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateCallback;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 
@@ -35,12 +40,14 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	}
 	
 	/**保存*/
-	public void save(T entity) {
+	public void save(T entity) {	
+		this.getHibernateTemplate().setFlushMode(HibernateTemplate.FLUSH_EAGER);
 		this.getHibernateTemplate().save(entity);
 	}
 
 	/**更新*/
 	public void update(T entity) {
+		this.getHibernateTemplate().setFlushMode(HibernateTemplate.FLUSH_EAGER);
 		this.getHibernateTemplate().update(entity);
 	}
 	

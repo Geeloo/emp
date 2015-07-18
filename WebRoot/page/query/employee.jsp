@@ -113,7 +113,7 @@ request.setAttribute("ctx",path);
            <input name="wage" class="easyui-vlidatebox" /> 
        </div> 
        <input type="hidden" name="action" id="hidtype" /> 
-       <input type="hidden" name="ID" id="Nameid"/> 
+       <input type="hidden" name="id" id="Nameid"/> 
        </form> 
    </div>
   <div id="dlg-buttons"> 
