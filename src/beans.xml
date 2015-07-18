@@ -16,8 +16,8 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
-		<property name="user" value="emp" />
-		<property name="password" value="emp" />
+		<property name="user" value="NKTEST" />
+		<property name="password" value="NKTEST" />
 		<property name="minPoolSize" value="5" />
 	
 		<property name="maxPoolSize" value="30" />

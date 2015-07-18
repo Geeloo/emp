@@ -43,5 +43,9 @@ public class TbEmployeeDaoImpl extends CommonDaoImpl<TbEmployee> implements TbEm
         SQLQuery query=getSession().createSQLQuery(sql).addEntity(TbEmployee.class);
          return query.list().size();
 	}
+	
+	public void insert(TbEmployee e){
+		
+	}
 
 }

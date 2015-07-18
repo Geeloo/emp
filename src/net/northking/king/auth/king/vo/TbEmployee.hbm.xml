@@ -7,8 +7,8 @@
 <hibernate-mapping>
     <class name="net.northking.king.auth.king.vo.TbEmployee" table="TB_EMPLOYEE" schema="NKTEST">
         <comment>系统登录人员</comment>
-        <id name="id" type="string">
-            <column name="ID" />
+        <id name="id" column="ID" type="string">
+            <generator class="uuid"/>
         </id>
         <property name="name" type="string">
             <column name="NAME" length="128">
