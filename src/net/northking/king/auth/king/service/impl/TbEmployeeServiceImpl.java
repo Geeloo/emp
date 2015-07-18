@@ -28,7 +28,7 @@ public class TbEmployeeServiceImpl implements TbEmployeeService<TbEmpCount> {
 			int number) {
 		// TODO Auto-generated method stub
 		StringBuilder jsonStr = new StringBuilder();
-		SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
+		//SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
 		List<TbEmployee> countQueryList=tbEmployeeDao.findqueryEmployee(tb,start,number);
 		
 		int count=tbEmployeeDao.findqueryEmployee(tb);
@@ -44,7 +44,7 @@ public class TbEmployeeServiceImpl implements TbEmployeeService<TbEmpCount> {
 			jsonStr .append("\"name\":\"").append(countQueryList.get(i).getName()).append("\",");
 		  //jsonStr .append("\"sex\":\"").append(countQueryList.get(i).getSex()).append("\",");
 			jsonStr .append("\"positionLevel\":\"").append(countQueryList.get(i).getPositionLevel()).append("\",");
-			jsonStr .append("\"entryDate\":\"").append(sFormat.format(countQueryList.get(i).getEntryDate())).append("\",");
+			jsonStr .append("\"entryDate\":\"").append(countQueryList.get(i).getEntryDate()).append("\",");
 			jsonStr .append("\"departmentId\":\"").append(countQueryList.get(i).getDepartmentId()).append("\",");
 			jsonStr .append("\"post\":\"").append(countQueryList.get(i).getPost()).append("\",");
 			jsonStr .append("\"education\":\"").append(countQueryList.get(i).getEducation()).append("\",");
