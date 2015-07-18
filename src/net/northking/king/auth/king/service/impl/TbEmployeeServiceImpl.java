@@ -14,49 +14,53 @@ import net.northking.king.auth.king.vo.TbEmpCount;
 import net.northking.king.auth.king.vo.TbEmployee;
 import net.northking.king.auth.king.dao.TbEmployeeDao;
 import net.northking.king.auth.king.service.TbEmployeeService;
-
+import org.apache.log4j.Logger;
 @Service(TbEmployeeService.SERVICE_NAME)
 @Transactional(readOnly=true)
 public class TbEmployeeServiceImpl implements TbEmployeeService<TbEmpCount> {
 	
 	@Resource(name=TbEmployeeDao.SERVICE_NAME)
 	private TbEmployeeDao tbEmployeeDao;
-
+	
+	private Logger logger = Logger.getLogger(TbEmployeeServiceImpl.class);
 	@Override
 	public String findqueryEmployee(TbEmpCount tb, int start,
 			int number) {
 		// TODO Auto-generated method stub
-		String jsonStr = "";
+		StringBuilder jsonStr = new StringBuilder();
 		SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
 		List<TbEmployee> countQueryList=tbEmployeeDao.findqueryEmployee(tb,start,number);
 		
 		int count=tbEmployeeDao.findqueryEmployee(tb);
-		jsonStr +="{";
-		jsonStr +="\"total\":";
-		jsonStr += count +",\"rows\":[";
+		jsonStr .append("{");
+		jsonStr .append("\"total\":");
+		jsonStr .append( count ).append(",\"rows\":[");
 		
 		for(int i=0;i<countQueryList.size();i++){
 			
-			jsonStr +="{";
-			jsonStr +="\"code\":\""+countQueryList.get(i).getCode()+"\",";
-			jsonStr +="\"name\":\""+countQueryList.get(i).getName()+"\",";
-		  //jsonStr +="\"sex\":\""+countQueryList.get(i).getSex()+"\",";
-			jsonStr +="\"positionLevel\":\""+countQueryList.get(i).getPositionLevel()+"\",";
-			jsonStr +="\"entryDate\":\""+sFormat.format(countQueryList.get(i).getEntryDate())+"\",";
-			jsonStr +="\"departmentId\":\""+countQueryList.get(i).getDepartmentId()+"\",";
-			jsonStr +="\"post\":\""+countQueryList.get(i).getPost()+"\",";
-			jsonStr +="\"education\":\""+countQueryList.get(i).getEducation()+"\",";
-			jsonStr +="\"wage\":\""+countQueryList.get(i).getWage()+"\"";
-			jsonStr +="}";
+			jsonStr .append("{");
+			jsonStr .append("\"id\":\"").append(countQueryList.get(i).getId()).append("\",");
+			jsonStr .append("\"code\":\"").append(countQueryList.get(i).getCode()).append("\",");
+			jsonStr .append("\"name\":\"").append(countQueryList.get(i).getName()).append("\",");
+		  //jsonStr .append("\"sex\":\"").append(countQueryList.get(i).getSex()).append("\",");
+			jsonStr .append("\"positionLevel\":\"").append(countQueryList.get(i).getPositionLevel()).append("\",");
+			jsonStr .append("\"entryDate\":\"").append(sFormat.format(countQueryList.get(i).getEntryDate())).append("\",");
+			jsonStr .append("\"departmentId\":\"").append(countQueryList.get(i).getDepartmentId()).append("\",");
+			jsonStr .append("\"post\":\"").append(countQueryList.get(i).getPost()).append("\",");
+			jsonStr .append("\"education\":\"").append(countQueryList.get(i).getEducation()).append("\",");
+			jsonStr .append("\"wage\":\"").append(countQueryList.get(i).getWage()).append("\"");
+			jsonStr .append("}");
 			
 			if(i==countQueryList.size()-1){
-				jsonStr +="]";
+				jsonStr .append("]");
 			}else{
-				jsonStr +=",";
+				jsonStr .append(",");
 			}
 		}
-		jsonStr +="}";
-		return jsonStr;
+		jsonStr .append("}");
+		System.out.println(jsonStr.toString());
+		logger.debug("TbEmployeeServiceImpl.findqueryEmployee return json = " + jsonStr.toString());
+		return jsonStr.toString();
 		
 	}
 

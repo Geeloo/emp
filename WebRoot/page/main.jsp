@@ -39,7 +39,7 @@
 						<span >人员管理</span>
 						<ul>
 							<li>
-								<span><a href="javascript:showProjectPage('employee')" target="mainLayoutIframe">人员信息管理</a></span>
+								<span><a href="${ctx}/employee/employeeAction_query.do" target="mainLayoutIframe">人员信息管理</a></span>
 							</li>
 							<li>
 								<span><a href="#" target="mainLayoutIframe">人员成本管理</a></span>
@@ -87,6 +87,7 @@
 				版权所有@京北方信息技术股份有限公司
 			</div>
 		</div>
+		
 	</body>
 	<script type="text/javascript">
 		

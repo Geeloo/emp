@@ -126,7 +126,7 @@ request.setAttribute("ctx",path);
 			data-options="rownumbers:true,singleSelect:true,pagination:true,url:'datagrid_data1.json',method:'get'">
 		<thead>
 			<tr>
-			
+				<th data-options="field:'id',width:68,hidden:true,align:'center'">id</th>
 		     	<th data-options="field:'code',width:68,hidden:false,align:'center'">人员编号</th>
 				<th data-options="field:'name',width:150,align:'center'">人员姓名</th>
 				<th data-options="field:'positionLevel',width:200,align:'center'">级别</th>
@@ -153,8 +153,10 @@ request.setAttribute("ctx",path);
 	        //sortName: 'code', 
 	        //sortOrder: 'desc', 
 	        remoteSort:false,  
-	        idField:'fldId', 
+	        idField:'id', 
 	        singleSelect:false,
+	        selectOnCheck:true,
+	        checkOnSelect:true,
 	        pagination:true,
 	        rownumbers:true,
 	        frozenColumns:[[ 
@@ -236,20 +238,32 @@ request.setAttribute("ctx",path);
             document.getElementById("hidtype").value="submit";
         }
         function edituser() {
-            var row = $("#dg").datagrid("getSelected");
-            if (row) {
+        	var rows = [];
+            rows = $('#dg').datagrid('getSelections');    
+            if (rows) {
+            	if(rows.length > 1){
+            		$.messager.alert("提示信息","只能选择一条记录!");
+            		return;
+            	}
+            	if(rows.length == 0 ){
+            		$.messager.alert("提示信息","请先选择一条记录");
+            		return;
+            	}
                 $("#dlg").dialog("open").dialog('setTitle', '修改人员信息');
-                $("#fm").form("load", row);
-                url = "" + row.ID;
+                $("#fm").form("load", rows[0]);
+                
+                console.log(rows[0]);
             }
         }
         function saveuser() {
-            $("#fm").form("submit", {
-                url: url,
+        	var save_url = "<%=request.getContextPath()%>/employee/employeeAction_saveemployee.do";
+            $("#fm").form("submit",{
+                url: save_url,
                 onsubmit: function () {
                     return $(this).form("validate");
                 },
                 success: function (result) {
+                	alert(result);
                     if (result == "1") {
                         $.messager.alert("提示信息", "操作成功");
                         $("#dlg").dialog("close");
@@ -262,11 +276,23 @@ request.setAttribute("ctx",path);
             });
         }
         function destroyUser() {
-            var row = $('#dg').datagrid('getSelected');
-            if (row) {
-                $.messager.confirm('Confirm', 'Are you sure you want to destroy this user?', function (r) {
-                    if (r) {
-                        $.post('destroy_user.php', { id: row.id }, function (result) {
+        	var delete_url = '<%=request.getContextPath()%>/employee/employeeAction_deleteemployee.do';
+       		var ids = [];	
+            var rows = $('#dg').datagrid('getSelections');
+            if(rows && rows.length == 0){
+            	$.messager.alert("提示信息","至少选择一条数据!");
+            	return;
+            }else{
+            	for(var i=0; i<rows.length; i++){
+ 					ids.push(rows[i].itemid);
+				}
+				alert(ids.join('\n'));
+            }
+            
+            if (rows) {
+                $.messager.confirm('Confirm', 'Are you sure you want to destroy these users?', function (r) {
+                    if (r) {					
+                        $.post(delete_url, ids, function (result) {
                             if (result.success) {
                                 $('#dg').datagrid('reload');    // reload the user data  
                             } else {

@@ -14,9 +14,9 @@ public class TbEmployee{
 	private String name;
 	private String code;
 	private String positionLevel;
-	private Date entryDate;
-	private Date positive;
-	private Date birthday;
+	private String entryDate;
+	private String positive;
+	private String birthday;
 	private String departmentId;
 	private String sex;
 	private String centerId;
@@ -70,27 +70,27 @@ public class TbEmployee{
 		this.positionLevel = positionLevel;
 	}
 
-	public Date getEntryDate() {
+	public String getEntryDate() {
 		return this.entryDate;
 	}
 
-	public void setEntryDate(Date entryDate) {
+	public void setEntryDate(String entryDate) {
 		this.entryDate = entryDate;
 	}
 
-	public Date getPositive() {
+	public String getPositive() {
 		return this.positive;
 	}
 
-	public void setPositive(Date positive) {
+	public void setPositive(String positive) {
 		this.positive = positive;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return this.birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
