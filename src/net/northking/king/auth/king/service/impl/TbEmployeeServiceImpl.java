@@ -57,6 +57,8 @@ public class TbEmployeeServiceImpl implements TbEmployeeService<TbEmpCount> {
 				jsonStr .append(",");
 			}
 		}
+		if(jsonStr.charAt(jsonStr.length() - 1) != ']')
+			jsonStr.append("]");
 		jsonStr .append("}");
 		System.out.println(jsonStr.toString());
 		logger.debug("TbEmployeeServiceImpl.findqueryEmployee return json = " + jsonStr.toString());

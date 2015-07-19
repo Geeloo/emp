@@ -47,8 +47,7 @@ public class TbEmployeeDaoImpl extends CommonDaoImpl<TbEmployee> implements TbEm
         return count;
 	}
 	
-	public void insert(TbEmployee e){
-		
-	}
+	
+	
 
 }

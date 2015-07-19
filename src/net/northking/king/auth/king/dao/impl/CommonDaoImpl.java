@@ -70,6 +70,7 @@ public class CommonDaoImpl<T> extends HibernateDaoSupport implements ICommonDao<
 	
 	/**使用集合删除集合中的对象*/
 	public void deleteObjectByCollection(List<T> list) {
+		this.getHibernateTemplate().setFlushMode(HibernateTemplate.FLUSH_EAGER);
 		this.getHibernateTemplate().deleteAll(list);
 	}
 	

@@ -1,6 +1,9 @@
 package net.northking.king.auth.king.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -91,6 +94,37 @@ public class EmployeeAction extends BaseAction<TbEmployee> {
 			};   		
     	}
     	
+    }
+    /**
+     * delete employees by a list which contains all these employees' id
+     * @author liyuan
+     * @since 2015-07-19
+     */
+    public void deleteemployee(){
+    	HttpServletRequest req = this.getServletRequest();
+    	String[] ids = req.getParameter("id_str").split("::");
+    	List<TbEmployee> list = new ArrayList<TbEmployee>();
+    	for(String id : ids){
+    		TbEmployee e = new TbEmployee();
+    		e.setId(id);
+    		list.add(e);
+    	}
+    
+    	tbEmployeeService.deletByCollection(list);   
+      	   	
+    	try{
+    		this.getServletResponse().getWriter().print("success"); 
+    		this.getServletResponse().getWriter().flush();
+    	}catch(IOException ioe){ 
+    		ioe.printStackTrace();  
+    		logger.debug(ioe);
+    	}finally{
+    		try {
+				this.getServletResponse().getWriter().close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			};   		
+    	}
     }
 	
 
