@@ -102,7 +102,7 @@
 					class="easyui-validatebox" required="true" />
 			</div>
 			<div class="fitem">
-				<label>入职日期</label> <input name="entryDate" class="easyui-datebox"
+				<label>入职日期</label> <input name="entryDate" class="easyui-datebox" data-options="formatter:myformatter,parser:myparser"
 					required="true" />
 			</div>
 			<div class="fitem">
@@ -193,7 +193,7 @@
 	    var p = $('#dg').datagrid('getPager'); 
 	    $(p).pagination({ 
 	        pageSize: 10,
-	        pageList: [5,10,15],
+	        pageList: [5,10,15,50],
 	        beforePageText: '第',
 	        afterPageText: '页    共 {pages} 页', 
 	        displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录', 
@@ -206,6 +206,9 @@
 		
 		
 		function countQuery(){
+			//显示查询结果前将页码移动至第一页,否则如果查询结果数量太少不足以在当前页码下显示的话就会自动移动页码至第一页，并触发onSelectPage()方法并重新加载数据将查询结果覆盖掉。
+			$('#dg').datagrid('load');
+			
 			var employee_name = $('#employee_name').val();
 			var employee_post = $('#employee_post').val();
 			var v_paramJson = {};
@@ -227,6 +230,7 @@
 			   //  var abc=data.parseJSON(); 
 			     // alert(abc,rows);
 			     alert("eval之后："+oData);
+			    
 			    $('#dg').datagrid('loadData',{"total":oData.total,"rows":oData.rows});
 			      // $('#dg').datagrid({data:oData.rows});
 			    },
@@ -317,6 +321,27 @@
 						});
 			}
 		}
+        
+    	function myformatter(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+			return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+		}
+		function myparser(s){
+			if (!s) return new Date();
+			var ss = (s.split('-'));
+			var y = parseInt(ss[0],10);
+			var m = parseInt(ss[1],10);
+			var d = parseInt(ss[2],10);
+			if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+				return new Date(y,m-1,d);
+			} else {
+				return new Date();
+			}
+		}
+        
+        
 	</script>
 </body>
 </html>
